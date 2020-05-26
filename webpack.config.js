@@ -4,7 +4,7 @@ console.log(path.join());
 
 module.exports = {
     entry: [
-        './src/playground/redux101.js'
+        './src/app.js'
     ],
     output: {
         path: path.join(__dirname, 'public'),

@@ -1,45 +1,72 @@
 import { createStore } from 'redux';
 
-const store = createStore( (state = { count: 0}, action) => {
+// Action generators - functions that return action objects
+
+const incrementCount = ({ incrementBy = 1 } = {}) => ({
+    type: 'INCREMENT',
+    incrementBy
+});
+
+const decrementCount = ({ decrementBy = 1 } = {} ) => ({
+    type: 'DECREMENT',
+    decrementBy
+});
+
+const setCount = ( { setCount } ) => ({
+    type: 'SET',
+    setCount
+});
+const resetCount = () => ({
+    type: 'RESET'
+});
+
+// Reducer
+// Reducers are pure functions 
+// 1. output is completely determined by an input
+const countReducer = (state = { count: 0}, action) => {
 
     switch(action.type) {
         case 'INCREMENT':
             return {
-                count: state.count + 1
+                count: state.count + action.incrementBy
             };
         case 'DECREMENT':
             return {
-                count: state.count - 1
+                count: state.count - action.decrementBy
+            };
+        case 'SET':
+            if(!action.setCount) return 'SET has to have a value';
+            return {
+                count: action.setCount
             };
         case 'RESET':
             return {
-                count: state.count - 1
+                count: 0
             };
         default: 
             return state;
     }
 
-});
+}
 
-console.log(store.getState());
+const store = createStore(countReducer);
+
+const unsubscribe = store.subscribe( ()=> {
+
+    console.log(store.getState());
+})
 
 // Actions - is an object that gets sent to the store
 
-//Increment
-store.dispatch({
-    type: 'INCREMENT'
-});
 
-store.dispatch({
-    type: 'RESET'
-});
+store.dispatch(incrementCount({ incrementBy: 5 }));
+store.dispatch(incrementCount());
 
-store.dispatch({
-    type: 'DECREMENT'
-});
+store.dispatch(decrementCount({ decrementBy: 4 }));
+store.dispatch(decrementCount());
 
+store.dispatch(setCount({ setCount: -100 }));
+// store.dispatch(setCount({}));
+store.dispatch(resetCount());
 
 // Reset count to 0
-
-
-console.log(store.getState());

@@ -1,25 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import AppRouter from './routers/AppRouter';
+import configureStore from "./store/configureStore";
+import { addExpense, removeExpense, editExpense } from "./actions/expenses";
+import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from "./actions/filters";
+import  getVisibleExpenses  from "./selectors/expenses";
+ 
 import "normalize.css/normalize.css";
 import "./style/styles.scss";
-import AppRouter from './routers/AppRouter';
 
-ReactDOM.render(<AppRouter />, document.getElementById("app"));
+const store = configureStore();
 
-// import { BrowserRouter as Router, Route } from "react-router-dom";
+store.dispatch(addExpense({ description: 'Water Bill', amount: 4900 }));
+store.dispatch(addExpense({ description: 'Gas Bill', amount: 4500 }));
+store.dispatch(addExpense({ description: 'Rent', amount: 900, createdAt: 1000 }));
 
-// All route props (match, location and history) are available to User
-// function User(props) {
-//   return <h1>Hello {props.match.params.username}!</h1>;
-// }
+const state = store.getState();
+const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+console.log(visibleExpenses);
 
-// ReactDOM.render(
-//   (<Router>
-//     <Route path="/user/:username" component={User} />
-//   </Router>),
-//   document.getElementById("app")
-// );
-console.log(222222);
-console.log(222);
 
-console.log(222);
+
+const jsx = (
+    <Provider store={store}>
+    <AppRouter />
+
+    </Provider>
+);
+ReactDOM.render(jsx, document.getElementById("app"));
+
