@@ -1,4 +1,0 @@
-1.  The instructor used react-router-dom$4.2.2 it gave me an error.
-    The error got fixed by using the latest version of react-router-dom and i think it is compatible with other dependencies like react and react-dom.
-
-    Error: warnAboutDeprecatedCJSRequire.js?fee0:17 Warning: Please use `require("history").createHashHistory` instead of `require("history/createHashHistory")`. Support for the latter will be removed in the next major release.

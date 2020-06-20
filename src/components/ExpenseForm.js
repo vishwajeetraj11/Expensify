@@ -1,24 +1,22 @@
 import React from "react";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
-import "react-dates/lib/css/_datepicker.css";
 
 const now = moment();
-console.log(now.format("Do MMM, YYYY"));
 
 export default class ExpenseForm extends React.Component {
-    constructor(props){
-        super(props);
+  constructor(props) {
+    super(props);
 
-  this.state = {
-    description: props.expense ? props.expense.description : "",
-    note: props.expense ? props.expense.note : "",
-    amount: props.expense ? `Rs ${props.expense.amount.toString()}` : "",
-    createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
-    calendarFocused: false,
-    error: "",
-  };
-}
+    this.state = {
+      description: props.expense ? props.expense.description : "",
+      note: props.expense ? props.expense.note : "",
+      amount: props.expense ? props.expense.amount.toString() : "",
+      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      calendarFocused: false,
+      error: "",
+    };
+  }
 
   onDescriptionChange = (e) => {
     const description = e.target.value;
@@ -57,16 +55,15 @@ export default class ExpenseForm extends React.Component {
         description: this.state.description,
         amount: parseFloat(this.state.amount, 100), // parsing float to string
         createdAt: this.state.createdAt.valueOf(), // timestamp using moment
-        note: this.state.note
-    })
-     
+        note: this.state.note,
+      });
     }
   };
 
   render() {
     return (
       <div>
-      { this.state.error && <p>{this.state.error}</p>}
+        {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
           <input
             type="text"

@@ -11,7 +11,7 @@ export const addExpense = ({
     type: "ADD_EXPENSE",
     expense: {
       id: uuid(),
-      description,
+      description, 
       note,
       amount,
       createdAt,
