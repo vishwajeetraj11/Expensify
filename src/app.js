@@ -17,6 +17,9 @@ import "normalize.css/normalize.css";
 import "./style/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
 
+import './firebase/firebase';
+import './playground/promises';
+
 const store = configureStore();
 
 const jsx = (
