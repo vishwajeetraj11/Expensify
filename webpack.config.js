@@ -15,6 +15,7 @@ module.exports = (env) => {
     const CSSExtract = new ExtractTextPlugin('styles.css');
     return {
         entry: [
+            'babel-polyfill',
             './src/app.js'
         ],
         output: {
