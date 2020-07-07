@@ -1,0 +1,44 @@
+.input-group {
+
+    display: flex;
+    margin-bottom: $l-size;
+    flex-direction: column;
+
+    @media (min-width: $desktop-breakpoint) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__item {
+        margin-bottom: $s-size;
+        margin-right: $s-size;
+
+        @media (min-width: $desktop-breakpoint) {
+            margin-right: $s-size;
+            margin: 0 $s-size 0 0;
+        }
+    }
+}
+
+.DateInput__display-text {
+    font-weight: 500;
+}
+
+.text-input {
+    border: 1px solid #cacccd;
+    height: 50px;
+    padding: $s-size;
+    font-size: $font-size-large;
+    font-weight: 400;
+}
+
+.select {
+    @extend .text-input;
+    background: #1abc9c;
+    color: #fff;
+}
+
+.text-area {
+    @extend .text-input;
+    height: 10rem;
+}

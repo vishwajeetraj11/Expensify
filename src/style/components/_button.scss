@@ -1,0 +1,43 @@
+.button {
+    font-weight: 300;
+    border:none;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+    background: $blue;
+    font-size: $font-size-large;
+    padding: $s-size;
+    color: #fff;
+}
+
+.box-layout__box-button{
+    margin-top: 2rem;
+    outline: none;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 1rem 3rem rgba(0,0,0, 0.15);
+    border-radius: 4px;
+    transition: 0.2s all;
+    transform: translateY(0) scale(1);
+    letter-spacing: 0.3px;
+    
+}
+
+.box-layout__box-button:hover {
+    outline: none;
+    box-shadow: 0 1rem 3rem rgba(0,0,0, 0.05);
+    transform: translateY(-3px) scale(1.03);
+}
+
+.box-layout__box-button:active {
+    outline: none;
+    box-shadow: 0 1rem 3rem rgba(0,0,0, 0.11);
+    transform: translateY(-1px) scale(1.02);
+}
+
+.btn-logout {
+    background: none;
+}
+
+.button--secondary {
+    background: #888;
+}
