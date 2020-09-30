@@ -1,3 +1,3 @@
-Expensify App
+## Expensify App
 
 https://expensify-web-appli.herokuapp.com/
